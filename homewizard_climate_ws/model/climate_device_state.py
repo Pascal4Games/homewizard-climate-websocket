@@ -12,7 +12,7 @@ class HomeWizardClimateDeviceState:
     target_temperature: int
     target_humidity: int
     current_humidity: int
-    fan_speed: str
+    fan_speed: int
     oscillate: bool
     oscillation: bool
     timer: int
@@ -24,11 +24,8 @@ class HomeWizardClimateDeviceState:
     heater: bool
     swing: bool
     ext_mode: list[str]
-    ext_current_temperature: Optional[int]
-    ext_target_temperature: Optional[int]
-    cool: bool
-    mute: bool
-    warning: list[str]
+    ext_current_temperature: int
+    ext_target_temperature: int
 
 
 def default_state():
@@ -40,7 +37,7 @@ def default_state():
             "target_temperature": 0,
             "target_humidity": 0,
             "current_humidity": 0,
-            "fan_speed": 'low',
+            "fan_speed": 0,
             "oscillate": False,
             "oscillation": False,
             "timer": 0,
@@ -54,9 +51,6 @@ def default_state():
             "error": [],
             "ext_current_temperature": 0,
             "ext_target_temperature": 0,
-            "cool": False,
-            "mute": False,
-            "warning": [],
         }
     )
 
