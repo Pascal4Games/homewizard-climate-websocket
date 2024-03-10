@@ -28,7 +28,3 @@ homewizard_climate_ws/model/climate_device_state.py
 homewizard_climate_ws/ws/__init__.py
 homewizard_climate_ws/ws/hw_websocket.py
 homewizard_climate_ws/ws/hw_websocket_payloads.py
-tests/__init__.py
-tests/conftest.py
-tests/test_dummy.py
-tests/data/example_values.json
