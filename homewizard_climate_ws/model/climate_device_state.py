@@ -7,6 +7,7 @@ from dataclasses_json import dataclass_json, Undefined
 @dataclass
 class HomeWizardClimateDeviceState:
     power_on: bool
+    lock: bool
     mode: Optional[str]
     current_temperature: int
     target_temperature: int
@@ -28,7 +29,6 @@ class HomeWizardClimateDeviceState:
     ext_target_temperature: int
     cool: bool
     mute: bool
-    lock: bool
     warning: list[str]
 
 
