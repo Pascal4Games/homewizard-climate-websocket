@@ -29,7 +29,6 @@ class HomeWizardClimateDeviceState:
     cool: bool
     mute: bool
     warning: list[str]
-    lock: bool
 
 
 def default_state():
@@ -56,7 +55,6 @@ def default_state():
             "ext_current_temperature": 0,
             "ext_target_temperature": 0,
             "cool": False,
-            "lock": False,
             "mute": False,
             "warning": [],
         }
