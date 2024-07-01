@@ -30,6 +30,7 @@ class HomeWizardClimateDeviceState:
     cool: bool
     mute: bool
     warning: list[str]
+    fault: list[str]
 
 
 def default_state():
@@ -59,6 +60,7 @@ def default_state():
             "mute": [],
             "lock": False,
             "warning": [],
+            "fault": [],
         }
     )
 
