@@ -17,19 +17,19 @@ class HomeWizardClimateDeviceState:
     oscillation: bool
     timer: int
     speed: int
-    error: str
+    error: list[str]
     heat_status: str
     vent_heat: bool
     silent: bool
     heater: bool
     swing: bool
-    ext_mode: str
+    ext_mode: list[str]
     ext_current_temperature: Optional[int]
     ext_target_temperature: Optional[int]
     cool: bool
     mute: bool
-    warning: str
-    fault: str
+    warning: list[str]
+    fault: list[str]
 
 
 def default_state():
@@ -46,19 +46,19 @@ def default_state():
             "oscillation": False,
             "timer": 0,
             "speed": 1,
-            "ext_mode": '',
+            "ext_mode": [],
             "heat_status": "idle",
             "vent_heat": False,
             "silent": False,
             "heater": False,
             "swing": False,
-            "error": '',
+            "error": [],
             "ext_current_temperature": 0,
             "ext_target_temperature": 0,
             "cool": False,
             "mute": False,
-            "warning": '',
-            "fault": '',
+            "warning": [],
+            "fault": [],
         }
     )
 
