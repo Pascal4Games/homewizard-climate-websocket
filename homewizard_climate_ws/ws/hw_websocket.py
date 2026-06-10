@@ -245,11 +245,30 @@ class HomeWizardClimateWebSocket:
         if received_message.get("patch"):
             kw = {}
             for patch in received_message.get("patch"):
-                if patch.get("op", "") == "replace":
-                    path_split = patch.get("path", "").strip("/").split("/")
-                    if len(path_split) == 2 and path_split[0] == "state":
-                        kw.update({path_split[1]: patch.get("value")})
-
+                op = patch.get("op", "")
+                path_split = patch.get("path", "").strip("/").split("/")
+                
+                if len(path_split) >= 2 and path_split[0] == "state":
+                    field = path_split[1]
+                    
+                    if op == "replace" and len(path_split) == 2:
+                        # Simpel veld vervangen
+                        kw.update({field: patch.get("value")})
+                    
+                    elif op == "add" and len(path_split) == 3:
+                        # Item toevoegen aan lijst (bijv. fault/0 of warning/0)
+                        current = list(getattr(self._last_state, field) or [])
+                        current.append(patch.get("value"))
+                        kw.update({field: current})
+                    
+                    elif op == "remove" and len(path_split) == 3:
+                        # Item verwijderen uit lijst
+                        index = int(path_split[2])
+                        current = list(getattr(self._last_state, field) or [])
+                        if 0 <= index < len(current):
+                            current.pop(index)
+                        kw.update({field: current})
+    
             if kw:
                 self._update_last_state(replace(self._last_state, **kw))
 
