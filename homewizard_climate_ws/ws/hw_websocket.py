@@ -125,6 +125,12 @@ class HomeWizardClimateWebSocket:
     def turn_off(self) -> None:
         self._send_message(self._payloads.turn_off())
 
+    def turn_on_lock(self) -> None:
+        self._send_message(self._payloads.turn_on_lock())
+
+    def turn_off_lock(self) -> None:
+        self._send_message(self._payloads.turn_off_lock())
+
     def turn_on_cool(self) -> None:
         self._send_message(self._payloads.turn_on_cool())
 
