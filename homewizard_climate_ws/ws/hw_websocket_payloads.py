@@ -52,6 +52,24 @@ class HomeWizardClimateWSPayloads:
             }
         )
 
+    def turn_on_lock(self) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [{"op": "replace", "path": "/state/lock", "value": True}],
+            }
+        )
+
+    def turn_off_lock(self) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [{"op": "replace", "path": "/state/lock", "value": False}],
+            }
+        )
+
     def turn_on_cool(self) -> str:
         return json.dumps(
             {
