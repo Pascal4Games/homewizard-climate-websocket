@@ -177,7 +177,6 @@ class HomeWizardClimateWebSocket:
 
     def _on_message(self, ws: websocket.WebSocket, message: str) -> None:
         self._LOGGER.debug(f"Received message: {message}")
-        self._LOGGER.warning(f"RAW MESSAGE: {message}")
 
         message_dict: dict = json.loads(message)
         message_device = message_dict.get("device")
