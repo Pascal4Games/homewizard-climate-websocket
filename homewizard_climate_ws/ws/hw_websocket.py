@@ -256,18 +256,10 @@ class HomeWizardClimateWebSocket:
                         kw.update({field: patch.get("value")})
                     
                     elif op == "add" and len(path_split) == 3:
-                        # Item toevoegen aan lijst (bijv. fault/0 of warning/0)
-                        current = list(getattr(self._last_state, field) or [])
-                        current.append(patch.get("value"))
-                        kw.update({field: current})
+                        kw.update({field: patch.get("value")})
                     
                     elif op == "remove" and len(path_split) == 3:
-                        # Item verwijderen uit lijst
-                        index = int(path_split[2])
-                        current = list(getattr(self._last_state, field) or [])
-                        if 0 <= index < len(current):
-                            current.pop(index)
-                        kw.update({field: current})
+                        kw.update({field: ""})
     
             if kw:
                 self._update_last_state(replace(self._last_state, **kw))
