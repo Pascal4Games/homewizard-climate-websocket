@@ -28,6 +28,8 @@ class HomeWizardClimateDeviceState:
     ext_target_temperature: Optional[int]
     cool: bool
     mute: bool
+    lock: bool
+    defrosting: bool
     warning: Optional[str]
     fault: Optional[str]
 
@@ -57,6 +59,8 @@ def default_state():
             "ext_target_temperature": 0,
             "cool": False,
             "mute": False,
+            "lock": False,
+            "defrosting": False,
             "warning": "",
             "fault": "",
         }
